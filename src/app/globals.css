@@ -48,6 +48,15 @@ h3 {
   text-wrap: balance;
 }
 
+@keyframes kenburns {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
 ::selection {
   background: var(--color-gold);
   color: #1a1407;

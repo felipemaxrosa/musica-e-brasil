@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* === Design system — direção C "palco escuro / sofisticado" ===================
+   Tema escuro único (não há toggle light/dark). Tokens de cor geram utilitários
+   Tailwind (bg-base, text-ink, text-gold, border-line, …). As fontes vêm do
+   next/font (variáveis setadas no <html>). */
+@theme {
+  --color-base: #0a0a0c; /* fundo da página */
+  --color-surface: #121216; /* cartões */
+  --color-surface-2: #17171d; /* cartões elevados / inputs */
+  --color-ink: #f4efe3; /* texto principal (~15:1 sobre base) */
+  --color-muted: #a7a19a; /* texto secundário (~7:1 sobre base) */
+  --color-gold: #e8c87e; /* acento */
+  --color-gold-deep: #cda948; /* acento forte / hover */
+  --color-wa: #1f9d55; /* verde WhatsApp (conversão) */
+  --color-line: #24242c; /* bordas / divisórias */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
+  --font-detail: var(--font-marcellus);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #1a1407;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
 }

@@ -1,2 +1,4 @@
-allowBuilds:
-  unrs-resolver: set this to true or false
+# Nenhuma dependência tem permissão para rodar build scripts (allowlist vazia).
+# Silencia o aviso de "ignored builds" (unrs-resolver, nativo do ESLint — opcional;
+# o ESLint usa o resolver JS como fallback).
+onlyBuiltDependencies: []

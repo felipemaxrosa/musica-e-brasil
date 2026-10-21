@@ -2,10 +2,10 @@
 
 /* === Design system — direção C "palco escuro / sofisticado" ===================
    Tema escuro único (não há toggle light/dark). Tokens de cor geram utilitários
-   Tailwind (bg-base, text-ink, text-gold, border-line, …). As fontes vêm do
+   Tailwind (bg-night, text-ink, text-gold, border-line, …). As fontes vêm do
    next/font (variáveis setadas no <html>). */
 @theme {
-  --color-base: #0a0a0c; /* fundo da página */
+  --color-night: #0a0a0c; /* fundo da página (nome 'night' evita colisão com o text-base de fonte do Tailwind) */
   --color-surface: #121216; /* cartões */
   --color-surface-2: #17171d; /* cartões elevados / inputs */
   --color-ink: #f4efe3; /* texto principal (~15:1 sobre base) */
@@ -33,7 +33,7 @@
 }
 
 body {
-  background: var(--color-base);
+  background: var(--color-night);
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

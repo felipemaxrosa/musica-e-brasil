@@ -11,7 +11,7 @@ const waHref = buildWhatsappUrl(WHATSAPP_DEFAULT_MESSAGE, SITE.whatsapp);
 /** Header fixo com navegação e CTAs de conversão (presente em todas as páginas). */
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-base/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line bg-night/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between md:h-20">
         <Link
           href="/"

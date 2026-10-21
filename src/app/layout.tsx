@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pt-BR"
       className={`${playfair.variable} ${marcellus.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-base text-ink font-sans">
+      <body className="min-h-full flex flex-col bg-night text-ink font-sans">
         {children}
       </body>
     </html>

@@ -47,7 +47,7 @@ export function MobileNav({ waHref }: { waHref: string }) {
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
-          className="fixed inset-0 z-[60] flex flex-col bg-base/98 backdrop-blur-md"
+          className="fixed inset-0 z-[60] flex flex-col bg-night/98 backdrop-blur-md"
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
             <span className="font-display text-xl font-black">

@@ -142,7 +142,7 @@ export function HeroCarousel({
               type="button"
               onClick={() => go(i - 1)}
               aria-label="Slide anterior"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/35 bg-base/50 text-gold"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/35 bg-night/50 text-gold"
             >
               ‹
             </button>
@@ -150,7 +150,7 @@ export function HeroCarousel({
               type="button"
               onClick={() => go(i + 1)}
               aria-label="Próximo slide"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/35 bg-base/50 text-gold"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/35 bg-night/50 text-gold"
             >
               ›
             </button>

@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/Reveal";
 export function FinalCTA({ waHref }: { waHref: string }) {
   return (
     <Section id="cta">
-      <Reveal className="overflow-hidden rounded-3xl border border-gold/25 bg-gradient-to-br from-surface to-base p-10 text-center md:p-16">
+      <Reveal className="overflow-hidden rounded-3xl border border-gold/25 bg-gradient-to-br from-surface to-night p-10 text-center md:p-16">
         <Heading as="h2" size="section" className="mx-auto max-w-2xl">
           Pronto pra realizar seu sonho de{" "}
           <em className="italic font-medium text-gold">tocar ou cantar</em>?

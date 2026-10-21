@@ -11,7 +11,7 @@ const BASE =
 const VARIANTS: Record<Variant, string> = {
   gold: "bg-gold text-[#1a1407] hover:bg-gold-deep",
   whatsapp: "bg-wa text-white hover:brightness-110",
-  ghost: "border border-gold/40 text-ink hover:bg-white/5",
+  ghost: "border border-gold/60 text-white hover:border-gold hover:bg-white/10",
 };
 
 const SIZES: Record<Size, string> = {

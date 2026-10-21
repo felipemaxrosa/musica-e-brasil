@@ -31,7 +31,7 @@ export function HowItWorks() {
 
       <ol className="mt-10 grid gap-6 md:grid-cols-3">
         {STEPS.map((s, idx) => (
-          <Reveal key={s.n} as="li" delay={idx * 80} className="relative rounded-2xl border border-line bg-base p-7">
+          <Reveal key={s.n} as="li" delay={idx * 80} className="relative rounded-2xl border border-line bg-night p-7">
             <span className="font-display text-4xl font-black text-gold/30">{s.n}</span>
             <h3 className="mt-3 font-display text-xl font-bold text-ink">{s.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>

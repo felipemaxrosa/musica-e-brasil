@@ -32,7 +32,7 @@ export function InstructorsFeatured({ instructors }: { instructors: Instructor[]
           <Reveal
             key={p._id}
             delay={idx * 60}
-            className="flex items-center gap-4 rounded-2xl border border-line bg-base p-5"
+            className="flex items-center gap-4 rounded-2xl border border-line bg-night p-5"
           >
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-gold/30 bg-surface">
               {p.photo ? (

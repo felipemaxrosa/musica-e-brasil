@@ -1,4 +1,7 @@
-# Nenhuma dependência tem permissão para rodar build scripts (allowlist vazia).
-# Silencia o aviso de "ignored builds" (unrs-resolver, nativo do ESLint — opcional;
-# o ESLint usa o resolver JS como fallback).
-onlyBuiltDependencies: []
+# Config do pnpm (pnpm 11 lê settings daqui, não do .npmrc).
+# Não roda deps-check antes de cada script (quebrava em rede instável).
+verifyDepsBeforeRun: false
+# unrs-resolver (nativo do ESLint) é opcional; ignorar seu build silencia o aviso
+# e evita exit 1 (o ESLint usa o resolver JS como fallback).
+ignoredBuiltDependencies:
+  - unrs-resolver

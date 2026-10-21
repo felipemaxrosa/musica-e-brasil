@@ -4,10 +4,9 @@ import { Button } from "@/components/ui/Button";
 import { Nav } from "./Nav";
 import { MobileNav } from "./MobileNav";
 import { SITE, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
+import { buildWhatsappUrl } from "@/lib/whatsapp";
 
-const waHref = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
-  WHATSAPP_DEFAULT_MESSAGE,
-)}`;
+const waHref = buildWhatsappUrl(WHATSAPP_DEFAULT_MESSAGE, SITE.whatsapp);
 
 /** Header fixo com navegação e CTAs de conversão (presente em todas as páginas). */
 export function Header() {

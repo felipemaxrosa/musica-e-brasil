@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { sanityFetch } from "@/sanity/lib/live";
+import { safeFetch } from "@/sanity/lib/fetch";
 import { settingsQuery, faqQuery } from "@/sanity/lib/queries";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
 import { SITE, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
@@ -32,12 +32,10 @@ type Settings = {
 type FaqItem = { _id: string; question: string; answer?: unknown[] };
 
 export default async function ContatoPage() {
-  const [{ data: settingsData }, { data: faqData }] = await Promise.all([
-    sanityFetch({ query: settingsQuery }),
-    sanityFetch({ query: faqQuery }),
+  const [settings, faq] = await Promise.all([
+    safeFetch<Settings>({ query: settingsQuery }, {}),
+    safeFetch<FaqItem[]>({ query: faqQuery }, []),
   ]);
-  const settings = (settingsData ?? {}) as Settings;
-  const faq = (faqData ?? []) as FaqItem[];
   const whatsapp = settings.whatsapp ?? SITE.whatsapp;
   const waHref = buildWhatsappUrl(WHATSAPP_DEFAULT_MESSAGE, whatsapp);
 

@@ -28,9 +28,6 @@ export function Header() {
         <Nav className="hidden md:flex" />
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button href={waHref} external variant="whatsapp" size="sm">
-            WhatsApp
-          </Button>
           <Button href="/contato" variant="gold" size="sm">
             Agendar aula
           </Button>

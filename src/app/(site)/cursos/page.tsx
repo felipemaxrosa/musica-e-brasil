@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { sanityFetch } from "@/sanity/lib/live";
+import { safeFetch } from "@/sanity/lib/fetch";
 import { coursesQuery, settingsQuery } from "@/sanity/lib/queries";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
 import { SITE, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
@@ -38,14 +38,13 @@ type Course = {
 };
 
 export default async function CursosPage() {
-  const [{ data: coursesData }, { data: settings }] = await Promise.all([
-    sanityFetch({ query: coursesQuery }),
-    sanityFetch({ query: settingsQuery }),
+  const [courses, settings] = await Promise.all([
+    safeFetch<Course[]>({ query: coursesQuery }, []),
+    safeFetch<{ whatsapp?: string } | null>({ query: settingsQuery }, null),
   ]);
-  const courses = (coursesData ?? []) as Course[];
   const waHref = buildWhatsappUrl(
     WHATSAPP_DEFAULT_MESSAGE,
-    (settings as { whatsapp?: string } | null)?.whatsapp ?? SITE.whatsapp,
+    settings?.whatsapp ?? SITE.whatsapp,
   );
 
   return (

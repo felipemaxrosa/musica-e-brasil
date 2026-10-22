@@ -15,6 +15,40 @@ const label = "mb-1.5 block text-sm text-muted";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+/** Select com chevron dourado customizado (remove o nativo com appearance-none). */
+function SelectField({
+  id,
+  name,
+  children,
+}: {
+  id: string;
+  name: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative">
+      <select
+        id={id}
+        name={name}
+        defaultValue=""
+        className={`${field} cursor-pointer appearance-none pr-10`}
+      >
+        {children}
+      </select>
+      <svg
+        aria-hidden="true"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gold"
+      >
+        <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
+
 export function AgendarForm({ waHref }: { waHref: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -105,34 +139,34 @@ export function AgendarForm({ waHref }: { waHref: string }) {
         </div>
         <div>
           <label className={label} htmlFor="studentKind">O aluno é</label>
-          <select id="studentKind" name="studentKind" className={field} defaultValue="">
+          <SelectField id="studentKind" name="studentKind">
             <option value="" disabled>Selecione</option>
             {KINDS.map((k) => <option key={k} value={k}>{k}</option>)}
-          </select>
+          </SelectField>
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
         <div>
           <label className={label} htmlFor="instrument">Instrumento</label>
-          <select id="instrument" name="instrument" className={field} defaultValue="">
+          <SelectField id="instrument" name="instrument">
             <option value="" disabled>Selecione</option>
             {INSTRUMENTS.map((i) => <option key={i} value={i}>{i}</option>)}
-          </select>
+          </SelectField>
         </div>
         <div>
           <label className={label} htmlFor="modality">Modalidade</label>
-          <select id="modality" name="modality" className={field} defaultValue="">
+          <SelectField id="modality" name="modality">
             <option value="" disabled>Selecione</option>
             {MODALITIES.map((m) => <option key={m} value={m}>{m}</option>)}
-          </select>
+          </SelectField>
         </div>
         <div>
           <label className={label} htmlFor="preferredTime">Melhor horário</label>
-          <select id="preferredTime" name="preferredTime" className={field} defaultValue="">
+          <SelectField id="preferredTime" name="preferredTime">
             <option value="" disabled>Selecione</option>
             {TIMES.map((t) => <option key={t} value={t}>{t}</option>)}
-          </select>
+          </SelectField>
         </div>
       </div>
 
@@ -155,18 +189,10 @@ export function AgendarForm({ waHref }: { waHref: string }) {
 
       {errorMsg && <p className="text-sm text-red-400">{errorMsg}</p>}
 
-      <div className="flex flex-wrap items-center gap-3 pt-2">
+      <div className="pt-2">
         <Button type="submit" variant="gold" size="lg">
           {status === "loading" ? "Enviando…" : "Enviar e agendar"}
         </Button>
-        <a
-          href={waHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-gold underline-offset-4 hover:underline"
-        >
-          ou fale no WhatsApp
-        </a>
       </div>
     </form>
   );

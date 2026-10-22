@@ -84,7 +84,7 @@ export function MobileNav({ waHref }: { waHref: string }) {
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "border-b border-line/60 py-4 font-display text-2xl",
+                      "border-b border-line/60 py-3.5 font-display text-xl",
                       active ? "text-gold" : "text-ink",
                     )}
                   >

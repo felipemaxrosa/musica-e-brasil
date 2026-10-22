@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { sanityFetch } from "@/sanity/lib/live";
+import { safeFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
 import { instructorsQuery, settingsQuery } from "@/sanity/lib/queries";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
@@ -28,12 +28,12 @@ type InstructorDoc = {
 };
 
 export default async function InstrutoresPage() {
-  const [{ data: instructorsData }, { data: settings }] = await Promise.all([
-    sanityFetch({ query: instructorsQuery }),
-    sanityFetch({ query: settingsQuery }),
+  const [instructorsData, settings] = await Promise.all([
+    safeFetch<InstructorDoc[]>({ query: instructorsQuery }, []),
+    safeFetch<{ whatsapp?: string } | null>({ query: settingsQuery }, null),
   ]);
 
-  const instructors: InstructorCard[] = ((instructorsData ?? []) as InstructorDoc[]).map(
+  const instructors: InstructorCard[] = instructorsData.map(
     (p) => ({
       _id: p._id,
       name: p.name,
@@ -45,7 +45,7 @@ export default async function InstrutoresPage() {
     }),
   );
 
-  const whatsapp = (settings as { whatsapp?: string } | null)?.whatsapp ?? SITE.whatsapp;
+  const whatsapp = settings?.whatsapp ?? SITE.whatsapp;
   const waHref = buildWhatsappUrl(WHATSAPP_DEFAULT_MESSAGE, whatsapp);
 
   return (

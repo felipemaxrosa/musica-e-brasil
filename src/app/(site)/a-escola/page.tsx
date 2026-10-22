@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import { sanityFetch } from "@/sanity/lib/live";
+import { safeFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
 import { sectionTextQuery, galleryQuery, settingsQuery } from "@/sanity/lib/queries";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
@@ -32,18 +32,18 @@ const YOUTUBE_ID = "Ig6LiYaaq70";
 type Gallery = { _id: string; image: Parameters<typeof urlFor>[0]; alt?: string; caption?: string };
 
 export default async function AEscolaPage() {
-  const [{ data: historia }, { data: galleryData }, { data: settings }] =
-    await Promise.all([
-      sanityFetch({ query: sectionTextQuery, params: { key: "historia" } }),
-      sanityFetch({ query: galleryQuery }),
-      sanityFetch({ query: settingsQuery }),
-    ]);
+  const [hist, gallery, settings] = await Promise.all([
+    safeFetch<{ title?: string; body?: unknown[] } | null>(
+      { query: sectionTextQuery, params: { key: "historia" } },
+      null,
+    ),
+    safeFetch<Gallery[]>({ query: galleryQuery }, []),
+    safeFetch<{ whatsapp?: string } | null>({ query: settingsQuery }, null),
+  ]);
 
-  const gallery = (galleryData ?? []) as Gallery[];
-  const hist = historia as { title?: string; body?: unknown[] } | null;
   const waHref = buildWhatsappUrl(
     WHATSAPP_DEFAULT_MESSAGE,
-    (settings as { whatsapp?: string } | null)?.whatsapp ?? SITE.whatsapp,
+    settings?.whatsapp ?? SITE.whatsapp,
   );
 
   return (

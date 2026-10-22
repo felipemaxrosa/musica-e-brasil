@@ -193,6 +193,43 @@ export default function PropostaPage() {
         </Container>
       </section>
 
+      {/* o que precisamos deles */}
+      <section className="border-t border-line py-16">
+        <Container>
+          <Badge>Quando a gente fechar</Badge>
+          <Heading className="mt-3 max-w-2xl">Pra publicar no endereço de vocês</Heading>
+          <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+            Coisas rápidas que vou precisar de vocês — nada complicado, eu cuido
+            de toda a parte técnica:
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {[
+              {
+                title: "Acesso ao domínio musicaebrasil.com.br",
+                text: "Pra eu publicar o site novo no endereço de sempre — vocês continuam donos do domínio, eu só aponto pro site novo.",
+              },
+              {
+                title: "E-mail do domínio",
+                text: "Pras notificações de agendamento chegarem como @musicaebrasil.com.br — mais profissional e com menos chance de cair no spam.",
+              },
+              {
+                title: "Fotos e textos reais",
+                text: "Pra deixar tudo com a cara da escola. Vocês me mandam e eu aplico.",
+              },
+              {
+                title: "Um empurrão no Google",
+                text: "Reivindicar/ajustar o Perfil de Empresa no Google (Maps) — a maior alavanca pra aparecer em “escola de música perto de mim”.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl border border-line bg-surface p-6">
+                <h3 className="font-display text-lg font-bold text-gold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* fechamento */}
       <section className="border-t border-line py-16">
         <Container>

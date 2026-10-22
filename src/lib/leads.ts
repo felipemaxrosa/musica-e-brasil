@@ -1,5 +1,6 @@
 import { createClient } from "next-sanity";
 import { apiVersion, dataset, projectId } from "@/sanity/env";
+import { SITE_URL } from "@/lib/constants";
 import type { AgendarData } from "@/lib/agendar-schema";
 
 const writeClient = createClient({
@@ -81,8 +82,8 @@ function renderLeadEmail(data: AgendarData): string {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e6e6e6">
       <tr>
         <td style="background:#0a0a0c;padding:28px 32px">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:800;color:#f4efe3">E<span style="color:#e8c87e">-</span>Brasil</div>
-          <div style="margin-top:6px;color:#e8c87e;font-size:13px;letter-spacing:2px;text-transform:uppercase">Nova aula experimental</div>
+          <img src="${SITE_URL}/logo.jpg" alt="Escola de Música E-Brasil" width="61" height="48" style="display:block;border:0;outline:none;height:48px;width:auto" />
+          <div style="margin-top:12px;color:#e8c87e;font-size:13px;letter-spacing:2px;text-transform:uppercase">Nova aula experimental</div>
         </td>
       </tr>
       <tr>

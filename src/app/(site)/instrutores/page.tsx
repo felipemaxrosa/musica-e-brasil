@@ -24,6 +24,7 @@ type InstructorDoc = {
   name: string;
   instruments?: string[];
   photo?: Parameters<typeof urlFor>[0] | null;
+  bio?: unknown[];
 };
 
 export default async function InstrutoresPage() {
@@ -38,15 +39,14 @@ export default async function InstrutoresPage() {
       name: p.name,
       instruments: p.instruments,
       photoUrl: p.photo
-        ? urlFor(p.photo).width(128).height(128).fit("crop").url()
+        ? urlFor(p.photo).width(640).height(640).fit("crop").url()
         : undefined,
+      bio: p.bio,
     }),
   );
 
-  const waHref = buildWhatsappUrl(
-    WHATSAPP_DEFAULT_MESSAGE,
-    (settings as { whatsapp?: string } | null)?.whatsapp ?? SITE.whatsapp,
-  );
+  const whatsapp = (settings as { whatsapp?: string } | null)?.whatsapp ?? SITE.whatsapp;
+  const waHref = buildWhatsappUrl(WHATSAPP_DEFAULT_MESSAGE, whatsapp);
 
   return (
     <>
@@ -56,7 +56,7 @@ export default async function InstrutoresPage() {
         subtitle="Mais de 15 professores na equipe. Veja quem vai te acompanhar nessa jornada."
       />
       <Section>
-        <InstructorGrid instructors={instructors} />
+        <InstructorGrid instructors={instructors} whatsapp={whatsapp} />
       </Section>
       <FinalCTA waHref={waHref} />
     </>

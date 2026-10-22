@@ -9,6 +9,9 @@ import {
 } from "@/sanity/lib/queries";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
 import { SITE, WHATSAPP_DEFAULT_MESSAGE } from "@/lib/constants";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { musicSchoolJsonLd } from "@/lib/seo";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import { CoursesPreview } from "@/components/sections/CoursesPreview";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -16,6 +19,8 @@ import { StageHighlight } from "@/components/sections/StageHighlight";
 import { InstructorsFeatured } from "@/components/sections/InstructorsFeatured";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default async function Home() {
   const [slidesRes, coursesRes, instructorsRes, testimonialsRes, settingsRes] =
@@ -49,6 +54,7 @@ export default async function Home() {
 
   return (
     <>
+      <JsonLd data={musicSchoolJsonLd()} />
       <HeroCarousel slides={heroSlides} waHref={waHref} />
       <CoursesPreview courses={courses ?? []} />
       <HowItWorks />

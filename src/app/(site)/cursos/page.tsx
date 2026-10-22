@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Cursos e Modalidades",
   description:
     "Canto, violão, guitarra, teclado, contrabaixo e bateria — presencial ou online ao vivo, em grupo ou personal, na maior escola de música do Litoral Norte.",
+  alternates: { canonical: "/cursos" },
 };
 
 const MODALITIES = [

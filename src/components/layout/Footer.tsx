@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 
@@ -16,10 +17,14 @@ export function Footer() {
     <footer className="mt-auto border-t border-line bg-surface/40">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 md:grid-cols-4">
         <div className="sm:col-span-2 md:col-span-1">
-          <span className="font-display text-2xl font-black">
-            E<span className="text-gold">-</span>Brasil
-          </span>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+          <Image
+            src="/logo.jpg"
+            alt={SITE.name}
+            width={960}
+            height={751}
+            className="h-16 w-auto mix-blend-screen"
+          />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
             Escola de música em {SITE.city}. A maior do {SITE.region}, desde{" "}
             {SITE.foundedYear}.
           </p>

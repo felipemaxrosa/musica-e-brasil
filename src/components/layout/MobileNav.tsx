@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -50,9 +51,13 @@ export function MobileNav({ waHref }: { waHref: string }) {
           className="fixed inset-0 z-[60] flex flex-col bg-night/98 backdrop-blur-md"
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <span className="font-display text-xl font-black">
-              E<span className="text-gold">-</span>Brasil
-            </span>
+            <Image
+              src="/logo.jpg"
+              alt="E-Brasil"
+              width={960}
+              height={751}
+              className="h-9 w-auto mix-blend-screen"
+            />
             <button
               type="button"
               onClick={() => setOpen(false)}

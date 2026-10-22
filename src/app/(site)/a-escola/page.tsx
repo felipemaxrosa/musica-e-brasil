@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "A Escola",
   description:
     "A história da E-Brasil desde 2006: quase 3 mil alunos, professores experientes, estúdio profissional e eventos que colocam o aluno no palco.",
+  alternates: { canonical: "/a-escola" },
 };
 
 const DIFERENCIAIS = [

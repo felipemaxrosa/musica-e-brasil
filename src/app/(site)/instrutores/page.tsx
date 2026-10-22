@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "Instrutores",
   description:
     "Conheça os professores da E-Brasil: músicos experientes e apaixonados por ensinar canto, violão, guitarra, teclado, contrabaixo e bateria.",
+  alternates: { canonical: "/instrutores" },
 };
 
 type InstructorDoc = {

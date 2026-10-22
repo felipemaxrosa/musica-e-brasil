@@ -11,11 +11,14 @@ import { Button } from "@/components/ui/Button";
 import { AgendarForm } from "@/components/sections/AgendarForm";
 import { Faq } from "@/components/sections/Faq";
 import { MapEmbed } from "@/components/sections/MapEmbed";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { musicSchoolJsonLd, faqPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Agende sua Aula",
   description:
     "Agende sua aula experimental gratuita na E-Brasil, em Caraguatatuba. Fale pelo WhatsApp ou pelo formulário.",
+  alternates: { canonical: "/contato" },
 };
 
 type Settings = {
@@ -40,6 +43,8 @@ export default async function ContatoPage() {
 
   return (
     <>
+      <JsonLd data={musicSchoolJsonLd()} />
+      {faq.length > 0 && <JsonLd data={faqPageJsonLd(faq)} />}
       <PageHero
         eyebrow="Agende sua aula"
         title="Vamos marcar sua aula experimental?"

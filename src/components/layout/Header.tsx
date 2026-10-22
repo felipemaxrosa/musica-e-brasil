@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Nav } from "./Nav";
@@ -13,12 +14,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-night/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between md:h-20">
-        <Link
-          href="/"
-          aria-label={`${SITE.name} — início`}
-          className="font-display text-2xl font-black tracking-tight"
-        >
-          E<span className="text-gold">-</span>Brasil
+        <Link href="/" aria-label={`${SITE.name} — início`} className="flex items-center">
+          <Image
+            src="/logo.jpg"
+            alt={SITE.name}
+            width={960}
+            height={751}
+            priority
+            className="h-11 w-auto mix-blend-screen md:h-12"
+          />
         </Link>
 
         <Nav className="hidden md:flex" />

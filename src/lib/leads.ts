@@ -1,6 +1,7 @@
 import { createClient } from "next-sanity";
 import { apiVersion, dataset, projectId } from "@/sanity/env";
 import { SITE_URL } from "@/lib/constants";
+import { buildWhatsappUrl, normalizeBrazilPhone } from "@/lib/whatsapp";
 import type { AgendarData } from "@/lib/agendar-schema";
 
 const writeClient = createClient({
@@ -46,13 +47,14 @@ const esc = (s = "") =>
 
 /** Template HTML de marca (table-based, estilos inline — compatível com e-mail clients). */
 function renderLeadEmail(data: AgendarData): string {
-  const digits = (data.phone || "").replace(/\D/g, "");
-  const waText = encodeURIComponent(
+  // Número do lead normalizado para o WhatsApp (adiciona o DDI 55 quando falta).
+  const phone = normalizeBrazilPhone(data.phone || "");
+  const waUrl = buildWhatsappUrl(
     `Olá ${data.name}! Aqui é da Escola de Música E-Brasil 🎶 Vi seu pedido de aula experimental${
       data.instrument ? ` de ${data.instrument}` : ""
     }. Vamos combinar um horário?`,
+    phone,
   );
-  const waUrl = `https://wa.me/${digits}?text=${waText}`;
 
   const rows = (
     [
@@ -91,7 +93,7 @@ function renderLeadEmail(data: AgendarData): string {
           <p style="margin:0 0 20px;color:#444;font-size:15px">Você recebeu uma nova solicitação de aula experimental pelo site:</p>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>
           ${
-            digits
+            phone
               ? `<div style="margin-top:28px;text-align:center">
                    <a href="${waUrl}" style="display:inline-block;background:#1f9d55;color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 28px;border-radius:999px">Responder no WhatsApp</a>
                  </div>`

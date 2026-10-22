@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
+import { cn } from '@/lib/utils';
 
 export type HeroSlide = { url: string; alt: string };
 
 const STATS = [
-  { value: "+3 mil", label: "alunos formados" },
-  { value: "18 anos", label: "no Litoral Norte" },
-  { value: "6+", label: "instrumentos" },
+  { value: '+3 mil', label: 'alunos' },
+  { value: '18 anos', label: 'no Litoral Norte' },
+  { value: '6+', label: 'instrumentos' },
 ];
 
 /** Hero com carrossel de FUNDO em crossfade (texto/CTA fixos).
@@ -39,7 +39,9 @@ export function HeroCarousel({
   };
 
   useEffect(() => {
-    reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    reduce.current = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     play();
     return stop;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,8 +66,8 @@ export function HeroCarousel({
           <div
             key={s.url}
             className={cn(
-              "absolute inset-0 transition-opacity duration-[1400ms] ease-in-out motion-reduce:transition-none",
-              idx === i ? "opacity-100" : "opacity-0",
+              'absolute inset-0 transition-opacity duration-[1400ms] ease-in-out motion-reduce:transition-none',
+              idx === i ? 'opacity-100' : 'opacity-0',
             )}
             aria-hidden={idx !== i}
           >
@@ -84,7 +86,7 @@ export function HeroCarousel({
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(55% 80% at 72% 18%, rgba(212,175,55,.18), transparent 60%), linear-gradient(90deg, rgba(6,6,7,.94) 0%, rgba(6,6,7,.62) 55%, rgba(6,6,7,.38) 100%)",
+              'radial-gradient(55% 80% at 72% 18%, rgba(212,175,55,.18), transparent 60%), linear-gradient(90deg, rgba(6,6,7,.94) 0%, rgba(6,6,7,.62) 55%, rgba(6,6,7,.38) 100%)',
           }}
         />
       </div>
@@ -94,7 +96,8 @@ export function HeroCarousel({
         <div className="max-w-2xl">
           <Badge>Escola de Música · desde 2006</Badge>
           <h1 className="mt-5 font-display text-4xl font-black leading-[1.03] sm:text-5xl lg:text-6xl">
-            Aqui, você vai <em className="italic font-medium text-gold">brilhar</em>
+            Aqui, você vai{' '}
+            <em className="italic font-medium text-gold">brilhar</em>
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink/85">
             A maior escola de música do Litoral Norte. Aulas com professores de
@@ -111,7 +114,9 @@ export function HeroCarousel({
           <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
             {STATS.map((s) => (
               <div key={s.label}>
-                <dt className="font-display text-2xl font-bold text-ink">{s.value}</dt>
+                <dt className="font-display text-2xl font-bold text-ink">
+                  {s.value}
+                </dt>
                 <dd className="text-sm text-muted">{s.label}</dd>
               </div>
             ))}
@@ -131,8 +136,8 @@ export function HeroCarousel({
                 aria-label={`Ir para o slide ${idx + 1}`}
                 aria-current={idx === i}
                 className={cn(
-                  "h-2.5 rounded-full transition-all",
-                  idx === i ? "w-7 bg-gold" : "w-2.5 bg-ink/30 hover:bg-ink/50",
+                  'h-2.5 rounded-full transition-all',
+                  idx === i ? 'w-7 bg-gold' : 'w-2.5 bg-ink/30 hover:bg-ink/50',
                 )}
               />
             ))}

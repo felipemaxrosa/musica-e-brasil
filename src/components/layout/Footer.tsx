@@ -60,7 +60,23 @@ export function Footer() {
                 WhatsApp (12) 99715-0806
               </a>
             </li>
-            <li className="text-muted">{SITE.city} · SP</li>
+            <li>
+              <a href={`tel:${SITE.phone}`} className="text-muted transition-colors hover:text-ink">
+                Fixo (12) 3881-2335
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block not-italic leading-relaxed text-muted transition-colors hover:text-ink"
+              >
+                {SITE.street}
+                <br />
+                {SITE.city} - SP · {SITE.postalCode}
+              </a>
+            </li>
           </ul>
         </div>
 

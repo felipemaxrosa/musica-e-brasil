@@ -1,6 +1,4 @@
-import { SITE } from "@/lib/constants";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { SITE, SITE_URL } from "@/lib/constants";
 
 /** JSON-LD da escola (MusicSchool/LocalBusiness). Nome oficial do site. */
 export function musicSchoolJsonLd(): Record<string, unknown> {
@@ -9,7 +7,7 @@ export function musicSchoolJsonLd(): Record<string, unknown> {
     "@type": "MusicSchool",
     name: SITE.name,
     description: `A maior escola de música do ${SITE.region}. Aulas presenciais e online ao vivo desde ${SITE.foundedYear}.`,
-    url: siteUrl,
+    url: SITE_URL,
     telephone: SITE.phone,
     foundingDate: String(SITE.foundedYear),
     address: {

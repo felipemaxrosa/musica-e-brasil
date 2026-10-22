@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Marcellus, Inter } from "next/font/google";
 import "./globals.css";
-import { SITE } from "@/lib/constants";
+import { SITE, SITE_URL } from "@/lib/constants";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -24,10 +24,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE.name} — Realize seu sonho de tocar ou cantar`,
     template: `%s · ${SITE.shortName}`,

@@ -16,7 +16,7 @@ export const SITE = {
   street: "R. Major Aires, 238 - Centro",
   postalCode: "11660-220",
   geo: { lat: -23.6202507, lng: -45.4093475 },
-  googleMapsUrl: "https://maps.app.goo.gl/svMmGspqmGRLHCZi6",
+  googleMapsUrl: "https://maps.app.goo.gl/91CZbdpPJRXTwtrN9",
   // Cidades atendidas (Litoral Norte) — sinal de área de atuação p/ busca local.
   areaServed: ["Caraguatatuba", "Ubatuba", "São Sebastião", "Ilhabela"],
   social: {

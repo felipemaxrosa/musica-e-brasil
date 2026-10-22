@@ -98,7 +98,10 @@ export default async function ContatoPage() {
               )}
             </div>
 
-            <MapEmbed lat={SITE.geo.lat} lng={SITE.geo.lng} />
+            <MapEmbed
+              query={`${SITE.name}, ${SITE.street}, ${SITE.city} - SP, ${SITE.postalCode}`}
+              mapsUrl={SITE.googleMapsUrl}
+            />
           </aside>
         </div>
       </Section>

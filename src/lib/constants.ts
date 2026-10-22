@@ -12,7 +12,13 @@ export const SITE = {
   whatsapp: "5512997150806",
   phone: "+551238812335",
   email: "", // a confirmar com a escola
+  // Endereço real (SEO local — PostalAddress).
+  street: "R. Major Aires, 238 - Centro",
+  postalCode: "11660-220",
   geo: { lat: -23.6202507, lng: -45.4093475 },
+  googleMapsUrl: "https://maps.app.goo.gl/svMmGspqmGRLHCZi6",
+  // Cidades atendidas (Litoral Norte) — sinal de área de atuação p/ busca local.
+  areaServed: ["Caraguatatuba", "Ubatuba", "São Sebastião", "Ilhabela"],
   social: {
     instagram: "https://www.instagram.com/escola_ebrasil/",
     facebook: "https://www.facebook.com/escolaebrasil/",

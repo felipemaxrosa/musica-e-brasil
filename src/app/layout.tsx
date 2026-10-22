@@ -36,6 +36,13 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     siteName: SITE.name,
   },
+  // Sinais de geolocalização (SEO local).
+  other: {
+    "geo.region": "BR-SP",
+    "geo.placename": SITE.city,
+    "geo.position": `${SITE.geo.lat};${SITE.geo.lng}`,
+    ICBM: `${SITE.geo.lat}, ${SITE.geo.lng}`,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
